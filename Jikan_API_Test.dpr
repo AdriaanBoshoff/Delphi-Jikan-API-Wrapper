@@ -9,9 +9,31 @@ uses
   JikanAPI in 'Jikan_API\JikanAPI.pas',
   JikanAPI.Types in 'Jikan_API\JikanAPI.Types.pas';
 
+procedure Main;
+begin
+  var api := TJikanAPI.Create;
+  try
+    for var aShow in api.SearchAnime('Attack on titan') do
+    begin
+      if not aShow.Title_English.Trim.IsEmpty then
+      begin
+        WriteLn(aShow.Title_English);
+      end
+      else
+      begin
+        Writeln(aShow.Title);
+      end;
+    end;
+  finally
+    api.Free;
+  end;
+end;
+
 begin
   try
-    { TODO -oUser -cConsole Main : Insert code here }
+    Main;
+
+    ReadLn;
   except
     on E: Exception do
     begin
