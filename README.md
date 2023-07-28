@@ -1,0 +1,2 @@
+# Delphi-Jikan-API-Wrapper
+ 
